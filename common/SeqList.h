@@ -11,6 +11,7 @@ template<typename ElemType>
 class SeqList {
 public:
     SeqList();
+    SeqList(const ElemType *arr, size_t n);
     ~SeqList();
     size_t size() const;
     ElemType get(size_t i) const;
@@ -39,6 +40,16 @@ SeqList<ElemType>::SeqList() {
 }
 
 template<typename ElemType>
+SeqList<ElemType>::SeqList(const ElemType* arr, const size_t n) {
+    this->arr = new ElemType[n];
+    arrLength = n;
+    this->length = n;
+    for (size_t i = 0; i < n; i++) {
+        this->arr[i] = arr[i];
+    }
+}
+
+template<typename ElemType>
 SeqList<ElemType>::~SeqList() {
     delete[] arr;
 }
@@ -50,14 +61,14 @@ size_t SeqList<ElemType>::size() const {
 
 template<typename ElemType>
 ElemType SeqList<ElemType>::get(const size_t i) const {
-    if (i < 0 || i >= length) {
+    if (i >= length) {
         throw std::out_of_range("Index out of range");
     }
     return arr[i];
 }
 
 template<typename ElemType>
-size_t SeqList<ElemType>::locate(ElemType x) const {
+size_t SeqList<ElemType>::locate(const ElemType x) const {
     for (size_t i = 0; i < length; i++) {
         if (arr[i] == x) {
             return i;
@@ -67,13 +78,13 @@ size_t SeqList<ElemType>::locate(ElemType x) const {
 }
 
 template<typename ElemType>
-void SeqList<ElemType>::append(ElemType x) {
+void SeqList<ElemType>::append(const ElemType x) {
     insert(length, x);
 }
 
 template<typename ElemType>
-void SeqList<ElemType>::insert(const size_t i, ElemType x) {
-    if (i < 0 || i > length) {
+void SeqList<ElemType>::insert(const size_t i, const ElemType x) {
+    if (i > length) {
         throw std::out_of_range("Index out of range");
     }
     if (length == arrLength) {
@@ -93,7 +104,7 @@ void SeqList<ElemType>::insert(const size_t i, ElemType x) {
 
 template<typename ElemType>
 void SeqList<ElemType>::remove(const size_t i) {
-    if (i < 0 || i > length) {
+    if (i > length) {
         throw std::out_of_range("Index out of range");
     }
     for (size_t j = i; j < length - 1; j++) {
