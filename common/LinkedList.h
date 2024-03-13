@@ -2,24 +2,25 @@
 #define COMMON_SINGLELINKEDLIST_H
 
 #include <cstddef>
+#include <initializer_list>
 #include <iostream>
 #include <stdexcept>
 
 template <typename ElemType>
-struct SingleNode {
-    ElemType data;
-    SingleNode *next;
-};
-
-template <typename ElemType>
 class LinkedList {
 public:
+    struct Node {
+        ElemType data;
+        Node *next;
+    };
+
     LinkedList();
     LinkedList(const ElemType *arr, size_t n);
+    LinkedList(std::initializer_list<ElemType> list);
     ~LinkedList();
     size_t size() const;
-    SingleNode<ElemType> *get_first() const;
-    SingleNode<ElemType> *get_node(size_t i) const;
+    Node *get_first() const;
+    Node *get_node(size_t i) const;
     ElemType get(size_t i) const;
     size_t locate(ElemType x) const;
     void prepend(ElemType x);
@@ -30,7 +31,7 @@ public:
     void print() const;
     constexpr static size_t INDEX_NOT_FOUND = -1;
 private:
-    SingleNode<ElemType> *first;
+    Node *first;
 };
 
 template <typename ElemType>
@@ -43,6 +44,14 @@ LinkedList<ElemType>::LinkedList(const ElemType *arr, const size_t n) {
     first = nullptr;
     for (size_t i = n; i > 0; i--) {
         prepend(arr[i - 1]);
+    }
+}
+
+template<typename ElemType>
+LinkedList<ElemType>::LinkedList(std::initializer_list<ElemType> list) {
+    first = nullptr;
+    for (auto it = list.end(); it != list.begin(); ) {
+        prepend(*--it);
     }
 }
 
@@ -64,13 +73,13 @@ size_t LinkedList<ElemType>::size() const {
     return n;
 }
 
-template <typename ElemType>
-SingleNode<ElemType> *LinkedList<ElemType>::get_first() const {
+template<typename ElemType>
+typename LinkedList<ElemType>::Node *LinkedList<ElemType>::get_first() const {
     return first;
 }
 
 template <typename ElemType>
-SingleNode<ElemType> *LinkedList<ElemType>::get_node(const size_t i) const {
+typename LinkedList<ElemType>::Node *LinkedList<ElemType>::get_node(const size_t i) const {
     auto *node = first;
     for (size_t j = 0; j < i; j++) {
         if (node == nullptr) {
@@ -109,14 +118,14 @@ void LinkedList<ElemType>::prepend(const ElemType x) {
 template<typename ElemType>
 void LinkedList<ElemType>::insert(const size_t i, const ElemType x) {
     if (i == 0) {
-        auto *node = new SingleNode<ElemType>;
+        auto *node = new Node;
         node->data = x;
         node->next = first;
         first = node;
         return;
     }
     auto *prev = get_node(i - 1);
-    auto *node = new SingleNode<ElemType>;
+    auto *node = new Node;
     node->data = x;
     node->next = prev->next;
     prev->next = node;

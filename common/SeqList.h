@@ -2,9 +2,8 @@
 #define COMMON_SEQLIST_H
 
 #include <cstddef>
-#include <cstdlib>
+#include <initializer_list>
 #include <iostream>
-#include <new>
 #include <stdexcept>
 
 template<typename ElemType>
@@ -12,6 +11,7 @@ class SeqList {
 public:
     SeqList();
     SeqList(const ElemType *arr, size_t n);
+    SeqList(std::initializer_list<ElemType> list);
     ~SeqList();
     size_t size() const;
     ElemType get(size_t i) const;
@@ -46,6 +46,17 @@ SeqList<ElemType>::SeqList(const ElemType* arr, const size_t n) {
     this->length = n;
     for (size_t i = 0; i < n; i++) {
         this->arr[i] = arr[i];
+    }
+}
+
+template<typename ElemType>
+SeqList<ElemType>::SeqList(std::initializer_list<ElemType> list) {
+    length = list.size();
+    arr = new ElemType[length];
+    arrLength = length;
+    size_t i = 0;
+    for (const auto &x : list) {
+        arr[i++] = x;
     }
 }
 
@@ -134,12 +145,12 @@ void SeqList<ElemType>::print() const {
 template<typename ElemType>
 void SeqList<ElemType>::scale() {
     const size_t newLength = arrLength + ARR_SCALE_STEP;
-    if (void *ptr = std::realloc(arr, newLength)) {
-        arr = static_cast<ElemType *>(ptr);
-        arrLength = newLength;
-    } else {
-        throw std::bad_alloc();
+    auto *newArr = new ElemType[newLength];
+    for (size_t i = 0; i < length; i++) {
+        newArr[i] = arr[i];
     }
+    delete[] arr;
+    arr = newArr;
 }
 
 template<typename ElemType>

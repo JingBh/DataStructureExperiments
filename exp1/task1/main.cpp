@@ -4,12 +4,10 @@
 #include "SeqList.h"
 
 int main() {
-    SeqList<char> list;
-    std::cout << (list.is_empty() ? "线性表为空" : "线性表不为空") << std::endl;
+    const SeqList<char> emptyList;
+    std::cout << (emptyList.is_empty() ? "线性表为空" : "线性表不为空") << std::endl;
 
-    for (char c = 'a'; c <= 'j'; c++) {
-        list.append(c);
-    }
+    SeqList list = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' };
     std::cout << "添加元素 a-j" << std::endl;
 
     std::cout << "线性表内容为：" << list << std::endl;

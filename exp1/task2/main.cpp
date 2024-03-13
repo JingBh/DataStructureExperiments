@@ -4,12 +4,10 @@
 #include "LinkedList.h"
 
 int main() {
-    LinkedList<char> list;
-    std::cout << (list.is_empty() ? "线性表为空" : "线性表不为空") << std::endl;
+    const LinkedList<char> emptyList;
+    std::cout << (emptyList.is_empty() ? "线性表为空" : "线性表不为空") << std::endl;
 
-    for (char c = 'e'; c >= 'a'; c--) {
-        list.prepend(c);
-    }
+    LinkedList list = { 'a', 'b', 'c', 'd', 'e' };
     std::cout << "添加元素 a-e" << std::endl;
 
     std::cout << "线性表内容为：" << list << std::endl;

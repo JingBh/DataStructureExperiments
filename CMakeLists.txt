@@ -17,3 +17,4 @@ add_executable(exp1task3 exp1/task3/main.cpp
         exp1/task3/SeqJosephusCircle.cpp
         exp1/task3/LinkedJosephusCircle.cpp
         exp1/task3/LinkedJosephusCircle.h)
+add_executable(exp1task4 exp1/task4/main.cpp)
