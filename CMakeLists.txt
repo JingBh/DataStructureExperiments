@@ -10,11 +10,14 @@ add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 include_directories(common)
 
 # exp1 executables
-add_executable(exp1task1 exp1/task1/main.cpp)
-add_executable(exp1task2 exp1/task2/main.cpp)
-add_executable(exp1task3 exp1/task3/main.cpp
-        exp1/task3/SeqJosephusCircle.h
-        exp1/task3/SeqJosephusCircle.cpp
-        exp1/task3/LinkedJosephusCircle.cpp
-        exp1/task3/LinkedJosephusCircle.h)
-add_executable(exp1task4 exp1/task4/main.cpp)
+# add_executable(exp1task1 exp1/task1/main.cpp)
+# add_executable(exp1task2 exp1/task2/main.cpp)
+# add_executable(exp1task3 exp1/task3/main.cpp
+#         exp1/task3/SeqJosephusCircle.h
+#         exp1/task3/SeqJosephusCircle.cpp
+#         exp1/task3/LinkedJosephusCircle.cpp
+#         exp1/task3/LinkedJosephusCircle.h)
+# add_executable(exp1task4 exp1/task4/main.cpp)
+
+# exp2 executables
+add_executable(exp2task1 exp2/task1/main.cpp)

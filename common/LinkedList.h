@@ -57,11 +57,7 @@ LinkedList<ElemType>::LinkedList(std::initializer_list<ElemType> list) {
 
 template <typename ElemType>
 LinkedList<ElemType>::~LinkedList() {
-    while (first != nullptr) {
-        auto *node = first;
-        first = first->next;
-        delete node;
-    }
+    this->empty();
 }
 
 template <typename ElemType>
