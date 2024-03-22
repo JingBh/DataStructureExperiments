@@ -13,11 +13,12 @@ public:
     };
 
     LinkedStack();
+    LinkedStack(const LinkedStack &);
     ~LinkedStack();
     size_t size() const;
     void push(ElemType x);
     void pop();
-    ElemType getTop() const;
+    ElemType get_top() const;
     bool is_empty() const;
     void empty();
 private:
@@ -27,6 +28,25 @@ private:
 template<typename ElemType>
 LinkedStack<ElemType>::LinkedStack() {
     first = nullptr;
+}
+
+template<typename ElemType>
+LinkedStack<ElemType>::LinkedStack(const LinkedStack &other) {
+    if (other.first == nullptr) {
+        first = nullptr;
+        return;
+    }
+    first = new Node;
+    Node *p = first;
+    for (auto *q = other.first; q != nullptr; q = q->next) {
+        p->data = q->data;
+        if (q->next != nullptr) {
+            p->next = new Node;
+            p = p->next;
+        } else {
+            p->next = nullptr;
+        }
+    }
 }
 
 template<typename ElemType>
@@ -60,7 +80,7 @@ void LinkedStack<ElemType>::pop() {
 }
 
 template<typename ElemType>
-ElemType LinkedStack<ElemType>::getTop() const {
+ElemType LinkedStack<ElemType>::get_top() const {
     if (this->is_empty()) {
         throw std::out_of_range("stack is empty");
     }

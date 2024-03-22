@@ -16,11 +16,12 @@ class SeqStack {
     friend std::ostream &operator<<<ElemType>(std::ostream &os, const SeqStack &stack);
 public:
     SeqStack();
+    SeqStack(const SeqStack &);
     ~SeqStack();
     size_t size() const;
     void push(ElemType x);
     void pop();
-    ElemType getTop() const;
+    ElemType get_top() const;
     bool is_empty() const;
     void empty();
 private:
@@ -38,6 +39,16 @@ SeqStack<ElemType>::SeqStack() {
     arr = new ElemType[ARR_INITIAL_LENGTH];
     arrLength = ARR_INITIAL_LENGTH;
     top = NO_TOP;
+}
+
+template<typename ElemType>
+SeqStack<ElemType>::SeqStack(const SeqStack &other) {
+    arr = new ElemType[other.arrLength];
+    arrLength = other.arrLength;
+    for (size_t i = 0, l = other.size(); i < l; i++) {
+        arr[i] = other.arr[i];
+    }
+    top = other.top;
 }
 
 template<typename ElemType>
@@ -70,7 +81,7 @@ void SeqStack<ElemType>::pop() {
 }
 
 template<typename ElemType>
-ElemType SeqStack<ElemType>::getTop() const {
+ElemType SeqStack<ElemType>::get_top() const {
     if (this->is_empty()) {
         throw std::out_of_range("stack is empty");
     }

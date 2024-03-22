@@ -16,7 +16,7 @@ void testSeq() {
     std::cout << "栈长度为 " << stack.size() << std::endl;
 
     while (!stack.is_empty()) {
-        std::cout << "栈顶元素为：" << stack.getTop() << "，退栈" << std::endl;
+        std::cout << "栈顶元素为：" << stack.get_top() << "，退栈" << std::endl;
         stack.pop();
     }
 
@@ -35,7 +35,7 @@ void testLinked() {
     std::cout << "栈长度为 " << stack.size() << std::endl;
 
     while (!stack.is_empty()) {
-        std::cout << "栈顶元素为：" << stack.getTop() << "，退栈" << std::endl;
+        std::cout << "栈顶元素为：" << stack.get_top() << "，退栈" << std::endl;
         stack.pop();
     }
 

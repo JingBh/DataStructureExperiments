@@ -22,3 +22,6 @@ include_directories(common)
 # exp2 executables
 add_executable(exp2task1 exp2/task1/main.cpp)
 add_executable(exp2task4 exp2/task4/main.cpp)
+add_executable(exp2task5 exp2/task5/main.cpp
+        exp2/task5/SuffixExpression.cpp
+        exp2/task5/SuffixExpression.h)

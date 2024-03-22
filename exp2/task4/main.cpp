@@ -12,7 +12,7 @@ bool isSymmetric(const std::string &str) {
     }
 
     for (size_t i = len / 2 + len % 2; i < len; i++) {
-        if (stack.getTop() != str.at(i)) {
+        if (stack.get_top() != str.at(i)) {
             return false;
         }
         stack.pop();
