@@ -110,6 +110,7 @@ void SeqStack<ElemType>::scale() {
     }
     delete[] arr;
     arr = newArr;
+    arrLength = newLength;
 }
 
 template<typename ElemType>
