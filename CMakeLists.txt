@@ -30,12 +30,15 @@ include_directories(common)
 #         exp2/task5/SuffixExpression.h)
 
 # exp3 executables
-add_executable(exp3task1 exp3/task1/main.cpp)
-add_executable(exp3task2 exp3/task2/main.cpp
-        exp3/task2/inorder_traversal.h)
-add_executable(exp3task3 exp3/task3/main.cpp)
-add_executable(exp3task4 exp3/task4/main.cpp
-        exp3/task4/HuffmanTree.cpp
-        exp3/task4/HuffmanTree.h)
-add_executable(exp3task5 exp3/task5/main.cpp
-        exp3/task5/ThreadedBinaryTree.h)
+# add_executable(exp3task1 exp3/task1/main.cpp)
+# add_executable(exp3task2 exp3/task2/main.cpp
+#         exp3/task2/inorder_traversal.h)
+# add_executable(exp3task3 exp3/task3/main.cpp)
+# add_executable(exp3task4 exp3/task4/main.cpp
+#         exp3/task4/HuffmanTree.cpp
+#         exp3/task4/HuffmanTree.h)
+# add_executable(exp3task5 exp3/task5/main.cpp
+#         exp3/task5/ThreadedBinaryTree.h)
+
+# exp4 executables
+add_executable(exp4task1 exp4/task1/main.cpp)
