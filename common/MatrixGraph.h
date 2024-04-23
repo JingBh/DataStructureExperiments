@@ -89,6 +89,9 @@ int MatrixGraph<T>::get_edge(size_t a, size_t b) const {
 
 template<typename T>
 inline const T &MatrixGraph<T>::get_vertex(size_t i) const {
+    if (i >= n) {
+        throw std::out_of_range("index out of range");
+    }
     return vertices[i];
 }
 

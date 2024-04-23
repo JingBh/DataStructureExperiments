@@ -46,3 +46,4 @@ add_executable(exp4task2 exp4/task2/main.cpp
         exp4/task2/Dijkstra.h
         exp4/task2/Kruskal.h
         exp4/task2/Prim.h)
+add_executable(exp4task3 exp4/task3/main.cpp)
