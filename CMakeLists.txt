@@ -42,3 +42,7 @@ include_directories(common)
 
 # exp4 executables
 add_executable(exp4task1 exp4/task1/main.cpp)
+add_executable(exp4task2 exp4/task2/main.cpp
+        exp4/task2/Dijkstra.h
+        exp4/task2/Kruskal.h
+        exp4/task2/Prim.h)
