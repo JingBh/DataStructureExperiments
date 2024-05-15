@@ -41,9 +41,15 @@ include_directories(common)
 #         exp3/task5/ThreadedBinaryTree.h)
 
 # exp4 executables
-add_executable(exp4task1 exp4/task1/main.cpp)
-add_executable(exp4task2 exp4/task2/main.cpp
-        exp4/task2/Dijkstra.h
-        exp4/task2/Kruskal.h
-        exp4/task2/Prim.h)
-add_executable(exp4task3 exp4/task3/main.cpp)
+# add_executable(exp4task1 exp4/task1/main.cpp)
+# add_executable(exp4task2 exp4/task2/main.cpp
+#         exp4/task2/Dijkstra.h
+#         exp4/task2/Kruskal.h
+#         exp4/task2/Prim.h)
+# add_executable(exp4task3 exp4/task3/main.cpp)
+
+# exp5 executables
+add_executable(exp5task1 exp5/task1/main.cpp
+        exp5/task1/BinarySearch.h)
+add_executable(exp5task2 exp5/task2/main.cpp
+        exp5/task2/BinarySearchTree.h)
